@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "practice"
+  "defaultProject": "practice",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
