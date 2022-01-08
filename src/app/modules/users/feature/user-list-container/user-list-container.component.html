@@ -1,1 +1,3 @@
-<p>user-list-container works!</p>
+<ng-container *ngIf="users$ | async as users">
+    <app-user-list [users]="users" (output)="onOutputUser($event)"></app-user-list>
+</ng-container>

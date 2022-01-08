@@ -1,1 +1,13 @@
-<p>user-list works!</p>
+<ng-container *ngIf="users">
+    <div class="container mt-5">
+        <h4 class="text-center">All users</h4>
+    
+        <div class="d-flex  mt-5 d-flex justify-content-between">
+            <ul class="d-flex flex-wrap w-100">
+                <li *ngFor="let user of users">
+                    <app-user-item [user]="user"></app-user-item>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ng-container>

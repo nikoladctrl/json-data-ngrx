@@ -1,1 +1,3 @@
-<p>user-detail-container works!</p>
+<ng-container *ngIf="user$ | async as user">
+    <app-user-detail [user]="user"></app-user-detail>
+</ng-container>

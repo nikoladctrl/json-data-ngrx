@@ -6,6 +6,14 @@ import { UserListContainerComponent } from './feature/user-list-container/user-l
 import { UserDetailContainerComponent } from './feature/user-detail-container/user-detail-container.component';
 import { UserListComponent } from './ui/user-list/user-list.component';
 import { UserDetailComponent } from './ui/user-detail/user-detail.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromUser from './data/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './data/user.effects';
+import { UserItemComponent } from './ui/user-item/user-item.component';
+import { UserNewContainerComponent } from './feature/user-new-container/user-new-container.component';
+import { UserNewComponent } from './ui/user-new/user-new.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,11 +21,17 @@ import { UserDetailComponent } from './ui/user-detail/user-detail.component';
     UserListContainerComponent,
     UserDetailContainerComponent,
     UserListComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    UserItemComponent,
+    UserNewContainerComponent,
+    UserNewComponent
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature(fromUser.usersFeatureKey, fromUser.reducer),
+    EffectsModule.forFeature([UserEffects])
   ]
 })
 export class UsersModule { }

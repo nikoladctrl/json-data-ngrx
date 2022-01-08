@@ -1,1 +1,32 @@
-<p>user-detail works!</p>
+<ng-container *ngIf="user">
+    <div class="d-flex flex-column m-5 detail-container">
+        <div class="card text-center">
+            <div class="headline d-flex justify-content-between flex-column mt-2">
+                <div></div>
+                <div>
+                    <h1>{{ user.name }}</h1>
+                </div>
+                <div>
+                    <img class="small" [src]="company?.image" alt="logo" *ngIf="user?.image">
+                </div>
+            </div>
+            <hr>
+            <div class="info d-flex justify-content-between">
+                <div class="pl-3 text-left">
+                    <p><i class="bi bi-person-circle"></i>&nbsp; <strong>Username: </strong>{{ user.username }}</p>
+                    <p><i class="bi bi-envelope"></i>&nbsp; <strong>Email: </strong>{{ user.email }}</p>
+                    <p><i class="bi bi-building"></i>&nbsp; <strong>Address: </strong>{{ user.address.street }}, {{ user.address.city }}, {{ user.address.zipcode }}</p>
+                    <p><i class="bi bi-phone-vibrate"></i>&nbsp; <strong>Phone: </strong>{{ user.phone }}</p>
+                </div>
+                <div class="pr-3 text-right">
+                    <p><i class="bi bi-geo-alt-fill"></i>&nbsp; <strong>Company: </strong>{{ user.company.name }}</p>
+                    <p><i class="bi bi-geo-alt-fill"></i>&nbsp; <strong>Website: </strong><a href="//{{user.website}}" target="_blank">{{ user.website }}</a></p>
+                </div>
+            </div>
+    
+            <div>
+                <app-company-detail-tab-header></app-company-detail-tab-header>
+            </div>
+        </div>
+    </div>
+</ng-container>

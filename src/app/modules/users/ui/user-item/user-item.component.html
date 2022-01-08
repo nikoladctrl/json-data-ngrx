@@ -1,0 +1,21 @@
+<ng-container *ngIf="user">
+    <div class="card">
+        <div class="text-center">
+            <a [routerLink]="['users', user.id]">
+                <h4>
+                    <a [routerLink]="user.id">{{ user.name }}</a>
+                </h4>
+            </a>
+        </div>
+        <div class="d-flex justify-content-between p-2">
+            <div class="text-start">
+                <p><i class="bi bi-person-circle"></i>&nbsp;<strong>{{ user.username }}</strong></p>
+                <p><i class="bi bi-compass"></i>&nbsp;<strong>{{ user.address.city }}</strong></p>
+            </div>
+            <div class="text-start">
+                <p><i class="bi bi-person-circle"></i>&nbsp;<strong>{{ user.username }}</strong></p>
+                <p><i class="bi bi-compass"></i>&nbsp;<strong>{{ user.address.city }}</strong></p>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <div class="text-center">
+        <h4>Create new user</h4>
+    </div>
+    <div class="form d-flex justify-content-center">
+        <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input  
+                        type="text" 
+                        class="form-control" 
+                        formControlName="name" 
+                        title="name" 
+                        placeholder="Name"
+                        [ngClass]="{ 'red' : createForm.controls.name.invalid && (createForm.controls.name.dirty || createForm.controls.name.touched) }">
+                <small *ngIf="createForm.controls.name.invalid && (createForm.controls.name.dirty || createForm.controls.name.touched)">Name is required!</small>
+            </div>
+            <div class="form-group">
+                <input  
+                        type="text" 
+                        class="form-control"
+                        formControlName="username" 
+                        title="username" 
+                        placeholder="Username"
+                        [ngClass]="{ 'red' : createForm.controls.username.invalid && (createForm.controls.username.dirty || createForm.controls.username.touched) }">
+                <small *ngIf="createForm.controls.username.invalid && (createForm.controls.username.dirty || createForm.controls.username.touched)">Username is required!</small>
+            </div>
+            <div class="form-group">
+                <input 
+                        type="email" 
+                        class="form-control" 
+                        formControlName="email" 
+                        title="email" 
+                        placeholder="Email"
+                        [ngClass]="{ 'red' : createForm.controls.email.invalid && (createForm.controls.email.dirty || createForm.controls.email.touched) }">
+                <small *ngIf="createForm.controls.email.invalid && (createForm.controls.email.dirty || createForm.controls.email.touched)">Email is required!</small>
+            </div>
+            <div class="form-group">
+                <input  
+                        type="number" 
+                        class="form-control" 
+                        formControlName="phone" 
+                        title="phone" 
+                        placeholder="Phone" 
+                        [ngClass]="{ 'red' : createForm.controls.phone.invalid && (createForm.controls.phone.dirty || createForm.controls.phone.touched) }">
+                <small *ngIf="createForm.controls.phone.invalid && (createForm.controls.phone.dirty || createForm.controls.phone.touched)">Phone is required!</small>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="website" title="website" placeholder="Website">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-success" title="Submit form" [disabled]="createForm.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
