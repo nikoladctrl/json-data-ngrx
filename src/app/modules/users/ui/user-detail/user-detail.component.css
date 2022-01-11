@@ -1,0 +1,9 @@
+@media screen and (max-width: 767px) {
+    .info {
+        flex-direction: column;
+    }
+    .info > :last-child {
+        text-align: left!important;
+        padding-left: 1rem;
+    }
+}
