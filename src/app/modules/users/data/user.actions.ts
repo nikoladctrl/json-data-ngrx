@@ -23,7 +23,7 @@ export const loadUsersFailure = createAction(
 
 export const getUser = createAction(
   '[User Detail Container] Get User',
-  props<{ id: string }>()
+  props<{ id: number }>()
 );
 
 export const loadUser = createAction(

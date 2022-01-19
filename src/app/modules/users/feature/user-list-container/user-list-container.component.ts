@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store';
@@ -11,7 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-user-list-container',
   templateUrl: './user-list-container.component.html',
-  styleUrls: ['./user-list-container.component.css']
+  styleUrls: ['./user-list-container.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserListContainerComponent implements OnInit {
 
@@ -25,8 +26,8 @@ export class UserListContainerComponent implements OnInit {
     this.users$ = this.store.select(fromUserSelectors.selectAllUsers);
   }
 
-  onOutputUser() {
-    this.router.navigate(['new'], { relativeTo: this.route });
-  }
+  // onOutputUser() {
+  //   this.router.navigate(['new'], { relativeTo: this.route });
+  // }
 
 }

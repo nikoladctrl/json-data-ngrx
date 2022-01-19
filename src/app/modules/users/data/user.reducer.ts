@@ -8,7 +8,6 @@ export const usersFeatureKey = 'users';
 
 export interface State extends EntityState<User> {
   // additional entities state properties
-  currentUser: User;
   loadStatus: 'NOT_LOADED' | 'LOADING' | 'LOADED';
   error: Error;
 
@@ -18,7 +17,6 @@ export interface State extends EntityState<User> {
 export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
 
 export const initialState: State = adapter.getInitialState({
-  currentUser: null,
   loadStatus: 'NOT_LOADED',
   error: null,
 });
@@ -31,12 +29,6 @@ export const reducer = createReducer(
   on(UserActions.upsertUser,
     (state, action) => adapter.upsertOne(action.user, state)
   ),
-  on(UserActions.getUser, (state, action) => {
-    return {
-      ...state,
-      currentUser: (state.entities[action.id]) ? {...state.entities[action.id]} : null
-    };
-  }),
   on(UserActions.addUsers,
     (state, action) => adapter.addMany(action.users, state)
   ),
@@ -55,7 +47,7 @@ export const reducer = createReducer(
   on(UserActions.deleteUsers,
     (state, action) => adapter.removeMany(action.ids, state)
   ),
-  on(UserActions.loadUsers, (state, action) => {
+  on(UserActions.loadUsers, (state) => {
     return {
       ...state,
       loadStatus: 'LOADING'

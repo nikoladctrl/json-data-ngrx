@@ -35,7 +35,7 @@ export class UserEffects {
   getUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.getUser),
-      concatLatestFrom(() => this.store.select(fromUserSelectors.selectCurrentUser)),
+      concatLatestFrom((action) => this.store.select(fromUserSelectors.selectCurrentUser(action.id))),
       filter(([, currentUser]) => currentUser === null),
       map(() => UserActions.loadUser({ id: +this.router.routerState.snapshot.url.substring(this.router.routerState.snapshot.url.lastIndexOf('/')+1) }))
     )

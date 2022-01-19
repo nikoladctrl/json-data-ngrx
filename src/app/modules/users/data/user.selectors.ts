@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import * as fromUser from '../data/user.reducer';
+import { User } from '../model/user.model';
 
 
 export const selectUserState = createFeatureSelector<fromUser.State>(
@@ -17,9 +18,9 @@ export const selectIsLoaded = createSelector(
     (state: fromUser.State) => state.loadStatus === 'LOADED'
 );
 
-export const selectCurrentUser = createSelector(
-    selectUserState,
-    (state: fromUser.State) => state.currentUser
+export const selectCurrentUser = (id: number) => createSelector(
+    selectAllUsers,
+    (users: User[]) => users.find(u => u.id === id)
 );
 
 export const selectAllUsers = createSelector(

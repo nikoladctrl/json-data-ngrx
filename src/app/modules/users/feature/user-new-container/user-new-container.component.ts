@@ -1,5 +1,5 @@
 import { addUser } from './../../data/user.actions';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
@@ -10,7 +10,8 @@ import { User } from '../../model/user.model';
 @Component({
   selector: 'app-user-new-container',
   templateUrl: './user-new-container.component.html',
-  styleUrls: ['./user-new-container.component.css']
+  styleUrls: ['./user-new-container.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserNewContainerComponent implements OnInit {
 
